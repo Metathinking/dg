@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dts/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="adminBaseLayout" template="/WEB-INF/tiles/admin/template/baseLayout.jsp">
+        <put-attribute name="title" value="购物测评网"/>
+        <put-attribute name="top-navigation" value="/WEB-INF/tiles/admin/template/top-navigation.jsp"/>
+        <put-attribute name="left-navigation" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="margin-top" value="56px"/>
+        <put-attribute name="login" value=""/>
+    </definition>
+
+    <definition name="admin/login" extends="adminBaseLayout">
+        <put-attribute name="login" value="/WEB-INF/jsp/admin/login.jsp"/>
+        <put-attribute name="margin-top" value="0"/>
+        <put-attribute name="top-navigation" value=""/>
+    </definition>
+
+    <!--文章管理 start-->
+    <definition name="articleBaseLayout" extends="adminBaseLayout">
+        <put-attribute name="left-navigation" value="/WEB-INF/tiles/admin/template/article-navigation.jsp"/>
+    </definition>
+    <definition name="admin/article-manager" extends="articleBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/article-manager.jsp"/>
+    </definition>
+    <definition name="admin/tag" extends="articleBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/tag.jsp"/>
+    </definition>
+    <!--文章管理 end-->
+
+
+
+    <!--用户管理 start-->
+    <definition name="userManagerBaseLayout" extends="adminBaseLayout">
+        <put-attribute name="left-navigation" value="/WEB-INF/tiles/admin/template/user-navigation.jsp"/>
+    </definition>
+    <definition name="admin/user-manager" extends="userManagerBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/user-manager.jsp"/>
+    </definition>
+    <definition name="admin/login-log" extends="userManagerBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/login-log.jsp"/>
+    </definition>
+    <definition name="admin/suggestion-list" extends="userManagerBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/suggestion-list.jsp"/>
+    </definition>
+    <!--用户管理 end-->
+
+    <!--网站设置 start-->
+    <definition name="settingBaseLayout" extends="adminBaseLayout">
+        <put-attribute name="left-navigation" value="/WEB-INF/tiles/admin/template/setting-navigation.jsp"/>
+    </definition>
+    <definition name="admin/site-info-edit" extends="settingBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/site-info-edit.jsp"/>
+    </definition>
+    <definition name="admin/site-setting-edit" extends="settingBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/site-setting-edit.jsp"/>
+    </definition>
+    <definition name="admin/admin-login-log" extends="settingBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/admin-login-log.jsp"/>
+    </definition>
+    <definition name="admin/column" extends="settingBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/column.jsp"/>
+    </definition>
+    <!--网站设置 end-->
+
+    <!--邮件管理 start-->
+    <definition name="emailBaseLayout" extends="adminBaseLayout">
+        <put-attribute name="left-navigation" value="/WEB-INF/tiles/admin/template/email-navigation.jsp"/>
+    </definition>
+    <definition name="admin/email-setting-edit" extends="emailBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/email-setting-edit.jsp"/>
+    </definition>
+    <definition name="admin/email-send" extends="emailBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/email-send.jsp"/>
+    </definition>
+    <definition name="admin/email-list" extends="emailBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/email-list.jsp"/>
+    </definition>
+    <definition name="admin/email-msg-template-edit" extends="emailBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/email-msg-template-edit.jsp"/>
+    </definition>
+    <definition name="admin/email-msg-template-list" extends="emailBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/admin/email-msg-template-list.jsp"/>
+    </definition>
+    <!--邮件管理 end-->
+
+
+</tiles-definitions>

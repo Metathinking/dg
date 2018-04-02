@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.RecommendRepository">
+    <resultMap id="m_recommend" type="com.hu.dg.domain.Recommend">
+        <id column="f_id" property="id"/>
+        <result column="f_image" property="image"/>
+        <result column="f_description" property="description"/>
+        <result column="f_shop_url" property="shopUrl"/>
+        <result column="f_recommend_url" property="recommendUrl"/>
+        <result column="f_time" property="time"/>
+        <result column="f_user_id" property="userId"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.Recommend">
+insert into m_recommend ( f_id,f_image,f_description,f_shop_url,f_recommend_url,f_time,f_user_id)
+values (#{id,jdbcType=INTEGER},#{image,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},
+#{shopUrl,jdbcType=VARCHAR},#{recommendUrl,jdbcType=VARCHAR},#{time,jdbcType=BIGINT},#{userId,jdbcType=INTEGER})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.Recommend">
+update m_recommend set f_image=#{image,jdbcType=VARCHAR},
+f_description=#{description,jdbcType=VARCHAR},f_shop_url=#{shopUrl,jdbcType=VARCHAR},
+f_recommend_url=#{recommendUrl,jdbcType=VARCHAR},f_time=#{time},f_user_id=#{userId}
+where f_id=#{id}
+</update>
+    <delete id="delete">delete from m_recommend where f_id=#{id}</delete>
+    <select id="list" resultMap="m_recommend">
+select * from m_recommend where f_user_id=#{userId} order by f_id desc limit #{start},#{size}
+</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_recommend</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_recommend</select>
+    <select id="findById" resultMap="m_recommend">select * FROM m_recommend where f_id=#{id}</select>
+</mapper>

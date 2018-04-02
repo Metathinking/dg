@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.EmailMsgTemplateRepository">
+    <resultMap id="m_email_msg_template" type="com.hu.dg.domain.EmailMsgTemplate">
+        <id column="f_id" property="id"/>
+        <result column="f_type" property="type"/>
+        <result column="f_subject" property="subject"/>
+        <result column="f_description" property="description"/>
+        <result column="f_content" property="content"/>
+        <result column="f_use" property="use"/>
+        <result column="f_time" property="time"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.EmailMsgTemplate">
+insert into m_email_msg_template ( f_id,f_type,f_subject,f_description,f_content,f_use,f_time)
+values (#{id,jdbcType=INTEGER},#{type,jdbcType=VARCHAR},#{subject,jdbcType=VARCHAR},#{description,jdbcType=VARCHAR},
+#{content,jdbcType=VARCHAR},#{use,jdbcType=TINYINT},#{time,jdbcType=BIGINT})</insert>
+    <update id="update" parameterType="com.hu.dg.domain.EmailMsgTemplate">
+update m_email_msg_template set f_type=#{type,jdbcType=VARCHAR},f_description=#{description,jdbcType=VARCHAR},
+f_content=#{content,jdbcType=VARCHAR},f_use=#{use,jdbcType=TINYINT},f_time=#{time,jdbcType=BIGINT},
+f_subject=#{subject,jdbcType=VARCHAR}
+ where f_id=#{id}
+ </update>
+    <delete id="delete">delete from m_email_msg_template where f_id=#{id}</delete>
+    <select id="list" resultMap="m_email_msg_template">
+select * from m_email_msg_template order by f_id desc
+limit #{start},#{size}</select>
+    <select id="findById" resultMap="m_email_msg_template">select * from m_email_msg_template where f_id=#{id}</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_email_msg_template</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_email_msg_template</select>
+    <select id="listOfUseByType" resultMap="m_email_msg_template">
+        select * from m_email_msg_template where f_use=1 and f_type=#{type}
+    </select>
+</mapper>

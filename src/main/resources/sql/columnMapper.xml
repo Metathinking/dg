@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.ColumnRepository">
+    <resultMap id="m_column" type="com.hu.dg.domain.Column">
+        <id column="f_id" property="id"/>
+        <result column="f_name" property="name"/>
+        <result column="f_url" property="url"/>
+        <result column="f_keywords" property="keywords"/>
+        <result column="f_order" property="order"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.Column">
+insert into m_column ( f_id,f_name,f_url,f_keywords,f_order)
+values
+        <foreach collection="list" item="item" separator=",">
+            (#{item.id,jdbcType=INTEGER},#{item.name,jdbcType=VARCHAR}, #{item.url,jdbcType=VARCHAR},
+            #{item.keywords,jdbcType=VARCHAR},#{item.order,jdbcType=INTEGER})
+        </foreach>
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.Column">
+update m_column set f_name=#{name,jdbcType=VARCHAR},f_url=#{url,jdbcType=VARCHAR},f_keywords=#{keywords,jdbcType=VARCHAR},
+f_order=#{order,jdbcType=INTEGER}
+where f_id=#{id}
+</update>
+    <delete id="delete">delete from m_column where f_id=#{id}</delete>
+    <select id="list" resultMap="m_column">select * from m_column order by f_order,f_id</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_column</select>
+    <select id="findById" resultMap="m_column">select * from m_column where f_id=#{id}</select>
+</mapper>

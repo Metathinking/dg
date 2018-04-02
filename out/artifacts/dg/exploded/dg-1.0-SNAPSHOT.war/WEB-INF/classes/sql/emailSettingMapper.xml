@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.EmailSettingRepository">
+    <resultMap id="m_email_setting" type="com.hu.dg.domain.EmailSetting">
+        <id column="f_id" property="id"/>
+        <result column="f_host_name" property="hostName"/>
+        <result column="f_smtp_port" property="smtpPort"/>
+        <result column="f_authentication_name" property="authenticationName"/>
+        <result column="f_authentication_password" property="authenticationPassword"/>
+        <result column="f_charset" property="charset"/>
+        <result column="f_send_person" property="sendPerson"/>
+        <result column="f_use" property="use"/>
+        <result column="f_time" property="time"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.EmailSetting">
+insert into m_email_setting ( f_id,f_host_name,f_smtp_port,f_authentication_name,f_authentication_password,
+f_charset,f_send_person,f_use,f_time)
+values (#{id,jdbcType=INTEGER},#{hostName,jdbcType=VARCHAR},#{smtpPort,jdbcType=INTEGER},
+#{authenticationName,jdbcType=VARCHAR},#{authenticationPassword,jdbcType=VARCHAR},#{charset,jdbcType=VARCHAR},
+#{sendPerson,jdbcType=VARCHAR},#{use,jdbcType=TINYINT},#{time,jdbcType=BIGINT})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.EmailSetting">
+update m_email_setting set f_host_name=#{hostName,jdbcType=VARCHAR},f_smtp_port=#{smtpPort,jdbcType=INTEGER},
+f_authentication_name=#{authenticationName,jdbcType=VARCHAR},
+f_authentication_password=#{authenticationPassword,jdbcType=VARCHAR},f_charset=#{charset,jdbcType=VARCHAR},
+f_send_person=#{sendPerson,jdbcType=VARCHAR},f_use=#{use,jdbcType=TINYINT} where f_id=#{id}
+</update>
+    <select id="list"
+            resultMap="m_email_setting">
+select * from m_email_setting order by f_id desc
+limit #{start},#{size}</select>
+    <select id="findById" resultMap="m_email_setting">select * from m_email_setting where f_id=#{id}</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_email_setting</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_email_setting</select>
+    <select id="listByUse" resultMap="m_email_setting">
+select * from m_email_setting
+where f_use=1
+</select>
+</mapper>

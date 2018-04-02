@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.TagRepository">
+    <resultMap id="m_tag" type="com.hu.dg.domain.Tag">
+        <id column="f_id" property="id"/>
+        <result column="f_name" property="name"/>
+        <result column="f_count" property="count"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.Tag">
+insert into m_tag ( f_id,f_name,f_count) values
+(#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{count,jdbcType=INTEGER})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.Tag">
+update m_tag set f_count=#{count,jdbcType=INTEGER}
+where f_id=#{id}</update>
+    <select id="list" resultMap="m_tag">select * from m_tag order by f_count DESC limit #{start},#{size}</select>
+    <select id="findByName" resultMap="m_tag">select * from m_tag where f_name=#{name}</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_tag</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_tag</select>
+</mapper>

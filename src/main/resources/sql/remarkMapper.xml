@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.RemarkRepository">
+    <resultMap id="m_remark" type="com.hu.dg.domain.Remark">
+        <id column="f_id" property="id"/>
+        <result column="f_remark" property="remark"/>
+    </resultMap>
+    <insert id="remark"
+            parameterType="com.hu.dg.domain.Remark">
+insert into m_remark ( f_id,f_remark) values (#{id,jdbcType=INTEGER},#{remark,jdbcType=VARCHAR})
+</insert>
+</mapper>

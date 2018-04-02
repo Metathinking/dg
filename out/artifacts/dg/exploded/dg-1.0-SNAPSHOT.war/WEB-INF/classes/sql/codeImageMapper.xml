@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.CodeImageRepository">
+    <resultMap id="m_code_image" type="com.hu.dg.domain.CodeImage">
+        <id column="f_id" property="id"/>
+        <result column="f_url" property="url"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.CodeImage">
+      insert into m_code_image ( f_id,f_url) values (#{id,jdbcType=INTEGER},#{url,jdbcType=VARCHAR})
+    </insert>
+    <select id="findById" resultMap="m_code_image">
+      select * from m_code_image where f_id=#{id}
+    </select>
+</mapper>

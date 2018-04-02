@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.ArticleAboutInfoRepository">
+    <resultMap id="m_article_about_info" type="com.hu.dg.domain.ArticleAboutInfo">
+        <result column="f_article_id" property="articleId"/>
+        <result column="f_focus_count" property="focusCount"/>
+        <result column="f_browse_count" property="browseCount"/>
+        <result column="f_support_count" property="supportCount"/>
+        <result column="f_oppose_count" property="opposeCount"/>
+        <result column="f_comment_count" property="commentCount"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.ArticleAboutInfo">
+insert into m_article_about_info ( f_article_id,f_focus_count,f_browse_count,f_support_count,f_oppose_count,
+f_comment_count)
+values (#{articleId,jdbcType=INTEGER},#{focusCount,jdbcType=INTEGER},
+#{browseCount,jdbcType=INTEGER},#{supportCount,jdbcType=INTEGER},#{opposeCount,jdbcType=INTEGER},
+#{commentCount,jdbcType=INTEGER})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.ArticleAboutInfo">
+update m_article_about_info set f_focus_count=#{focusCount,jdbcType=INTEGER},
+f_browse_count=#{browseCount,jdbcType=INTEGER},f_support_count=#{supportCount,jdbcType=INTEGER},
+f_oppose_count=#{opposeCount,jdbcType=INTEGER},f_comment_count=#{commentCount,jdbcType=INTEGER}
+where  f_article_id=#{articleId}
+</update>
+    <delete id="delete">delete from m_article_about_info where f_article_id=#{articleId}</delete>
+    <select id="findById" resultMap="m_article_about_info">select * from m_article_about_info where f_article_id=#{articleId}</select>
+</mapper>

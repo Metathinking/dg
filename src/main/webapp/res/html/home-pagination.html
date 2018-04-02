@@ -1,0 +1,24 @@
+<nav class="text-center">
+    <ul class="pagination">
+        <li ng-class="{disabled:index==1}">
+            <a href="javascript:void(0)" ng-if="index==1">&laquo;</a>
+            <a href="{{link+'?index=1'}}" ng-if="index!=1">&laquo;</a>
+        </li>
+        <li ng-class="{disabled:index==1}">
+            <a href="javascript:void(0)" ng-if="index==1">上一页</a>
+            <a href="{{link+'?index='+(index-1)}}" ng-if="index!=1">上一页</a>
+        </li>
+        <li ng-repeat="page in pageList.slice(getStart(index,pageCount),getEnd(index,pageCount))"
+            ng-class="{active:page==index}">
+            <a href="{{link+'?index='+page}}">{{page}}</a>
+        </li>
+        <li ng-class="{disabled:index==pageCount}">
+            <a href="javascript:void(0)" ng-if="index==pageCount">下一页</a>
+            <a href="{{link+'?index='+(index+1)}}" ng-if="index!=pageCount">下一页</a>
+        </li>
+        <li ng-class="{disabled:index==pageCount}">
+            <a href="javascript:void(0)" ng-if="index==pageCount">&raquo;</a>
+            <a href="{{link+'?index='+pageCount}}" ng-if="index!=pageCount">&raquo;</a>
+        </li>
+    </ul>
+</nav>

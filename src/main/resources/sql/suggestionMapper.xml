@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.SuggestionRepository">
+    <resultMap id="m_suggestion" type="com.hu.dg.domain.Suggestion">
+        <id column="f_id" property="id"/>
+        <result column="f_title" property="title"/>
+        <result column="f_content" property="content"/>
+        <result column="f_time" property="time"/>
+        <result column="f_contact_way" property="contactWay"/>
+        <result column="f_user_id" property="userId"/>
+        <result column="f_handled" property="handled"/>
+        <result column="f_ip" property="ip"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.Suggestion">
+insert into m_suggestion ( f_id,f_title,f_content,f_time,f_contact_way,f_user_id,f_handled,f_ip) values (#{id,jdbcType=INTEGER},#{title,jdbcType=VARCHAR},#{content,jdbcType=VARCHAR},#{time,jdbcType=BIGINT},#{contactWay,jdbcType=VARCHAR},#{userId,jdbcType=INTEGER},#{handled,jdbcType=TINYINT},#{ip,jdbcType=VARCHAR})</insert>
+    <update id="update" parameterType="com.hu.dg.domain.Suggestion">
+update m_suggestion set f_title=#{title,jdbcType=VARCHAR},f_content=#{content,jdbcType=VARCHAR},f_time=#{time,jdbcType=BIGINT},f_contact_way=#{contactWay,jdbcType=VARCHAR},f_user_id=#{userId,jdbcType=INTEGER},f_handled=#{handled,jdbcType=TINYINT},f_ip=#{ip,jdbcType=VARCHAR} where f_id=#{id}</update>
+    <delete id="delete">delete from m_suggestion where f_id=#{id}</delete>
+    <select id="list" resultMap="m_suggestion">select * from m_suggestion order by f_id desc limit #{start},#{size}</select>
+    <select id="findById" resultMap="m_suggestion">select * from m_suggestion where f_id=#{id}</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_suggestion</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_suggestion</select>
+</mapper>

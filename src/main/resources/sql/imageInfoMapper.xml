@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.ImageInfoRepository">
+    <resultMap id="m_image_info" type="com.hu.dg.domain.ImageInfo">
+        <id column="f_id" property="id"/>
+        <result column="f_url" property="url"/>
+        <result column="f_md5_code" property="md5Code"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.ImageInfo">
+insert into m_image_info ( f_id,f_url,f_md5_code)
+values (#{id,jdbcType=INTEGER},#{url,jdbcType=VARCHAR},#{md5Code,jdbcType=VARCHAR})
+</insert>
+    <delete id="delete">delete from m_image_info where f_id=#{id}</delete>
+    <select id="findByCode" resultMap="m_image_info">
+select * from m_image_info where f_md5_code=#{md5Code}
+</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_image_info</select>
+</mapper>

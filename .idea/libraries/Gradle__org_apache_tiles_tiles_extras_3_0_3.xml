@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.apache.tiles:tiles-extras:3.0.3">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tiles/tiles-extras/3.0.3/1e3bbabf1f924cf2f20f3163e237d303a6ad12f2/tiles-extras-3.0.3.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.tiles/tiles-extras/3.0.3/3ac4ed80bd788516f0c751dd4068ec2f3e954f33/tiles-extras-3.0.3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

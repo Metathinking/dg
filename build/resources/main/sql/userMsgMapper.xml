@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.UserMsgRepository">
+    <resultMap id="m_user_msg" type="com.hu.dg.domain.UserMsg">
+        <id column="f_id" property="id"/>
+        <result column="f_icon" property="icon"/>
+        <result column="f_sex" property="sex"/>
+        <result column="f_introduction" property="introduction"/>
+        <result column="f_height" property="height"/>
+        <result column="f_weight" property="weight"/>
+        <result column="f_bust" property="bust"/>
+        <result column="f_waist" property="waist"/>
+        <result column="f_hips" property="hips"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.UserMsg">
+insert into m_user_msg ( f_id,f_icon,f_sex,f_introduction,f_height,f_weight,f_bust,f_waist,f_hips)
+values (#{id,jdbcType=INTEGER},#{icon,jdbcType=VARCHAR},#{sex,jdbcType=VARCHAR},#{introduction,jdbcType=VARCHAR},
+#{height,jdbcType=DOUBLE},#{weight,jdbcType=DOUBLE},#{bust,jdbcType=DOUBLE},#{waist,jdbcType=DOUBLE},
+#{hips,jdbcType=DOUBLE})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.UserMsg">
+update m_user_msg set f_icon=#{icon,jdbcType=VARCHAR},f_sex=#{sex,jdbcType=VARCHAR},
+f_introduction=#{introduction,jdbcType=VARCHAR},f_height=#{height,jdbcType=DOUBLE},f_weight=#{weight,jdbcType=DOUBLE},
+f_bust=#{bust,jdbcType=DOUBLE},f_waist=#{waist,jdbcType=DOUBLE},f_hips=#{hips,jdbcType=DOUBLE}
+where f_id=#{id}
+</update>
+    <delete id="delete">delete from m_user_msg where f_id=#{id}</delete>
+    <select id="findById" resultMap="m_user_msg">select * from m_user_msg where f_id=#{id}</select>
+</mapper>

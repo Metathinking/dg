@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dts/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="baseLayout" template="/WEB-INF/tiles/front/template/baseLayout.jsp">
+        <!--<put-attribute name="title" value="购物测评网"/>-->
+        <put-attribute name="top-navigation" value="/WEB-INF/tiles/front/template/top-navigation.jsp"/>
+        <put-attribute name="user-top" value=""/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="loginModal" value=""/>
+        <put-attribute name="margin-top" value="100px"/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/front/template/footer.jsp"/>
+    </definition>
+
+    <definition name="front/welcome" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/welcome.jsp"/>
+    </definition>
+    <definition name="front/login" extends="baseLayout">
+        <put-attribute name="top-navigation" value=""/>
+        <put-attribute name="margin-top" value="0"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/login.jsp"/>
+        <put-attribute name="footer" value=""/>
+    </definition>
+    <definition name="front/register" extends="baseLayout">
+        <put-attribute name="top-navigation" value=""/>
+        <put-attribute name="margin-top" value="0"/>
+        <put-attribute name="content" value="/WEB-INF/jsp/front/register.jsp"/>
+        <put-attribute name="footer" value=""/>
+    </definition>
+    <definition name="front/article-show" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/article-show.jsp"/>
+        <put-attribute name="loginModal" value="/WEB-INF/tiles/front/template/login.jsp"/>
+    </definition>
+    <definition name="front/email-validate-back" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/email-validate-back.jsp"/>
+    </definition>
+    <definition name="front/forget-password-send" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/forget-password-send.jsp"/>
+    </definition>
+    <definition name="front/forget-password-reset" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/forget-password-reset.jsp"/>
+    </definition>
+    <definition name="front/suggestion-edit" extends="baseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/suggestion-edit.jsp"/>
+    </definition>
+
+    <!--前台用户页面 start-->
+    <definition name="user-top" extends="baseLayout">
+        <put-attribute name="user-top" value="/WEB-INF/tiles/front/template/user-top.jsp"/>
+        <put-attribute name="loginModal" value="/WEB-INF/tiles/front/template/login.jsp"/>
+    </definition>
+    <definition name="front/user/article-list" extends="user-top">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/user/article-list.jsp"/>
+    </definition>
+    <definition name="front/user/focus-article-list" extends="user-top">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/user/focus-article-list.jsp"/>
+    </definition>
+    <definition name="front/user/focus-user-list" extends="user-top">
+        <put-attribute name="content"  value="/WEB-INF/jsp/front/user/focus-user-list.jsp"/>
+    </definition>
+    <definition name="front/user/fans-list" extends="user-top">
+        <put-attribute name="content" value="/WEB-INF/jsp/front/user/fans-list.jsp"/>
+    </definition>
+    <!--前台用户页面 end-->
+</tiles-definitions>

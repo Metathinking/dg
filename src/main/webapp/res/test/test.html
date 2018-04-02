@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head >
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <title>Title</title>
+    <script type="text/javascript" src="/res/js/angular-1.5.0.min.js"></script>
+</head>
+<body >
+<div ng-app="supplierEditApp">
+    <p>基础信息>供应商编辑</p>
+    <div ng-controller="supplierEditCtrl">
+        <button ng-click="submit()">测试</button>
+       {{info}}
+    </div>
+</div>
+<script type="text/javascript">
+    angular.module('supplierEditApp',[])
+            .controller('supplierEditCtrl',function($scope,$http){
+                $scope.info="ssss";
+                $scope.submit=function(){
+                    var req={
+                        method:"POST",
+                        url:"/login",
+//                        headers:{
+//                            "Content-type":"application/json"
+//                        },
+                        data:{
+                            nickname:"123",
+                            password:"123"
+                        }
+                    }
+                    $http(req).success(function(response){
+                        $scope.info=response;
+                    }).error(function(response){
+                        $scope.info=response;
+                    })
+                }
+            })
+</script>
+</body>
+</html>
+<script>
+    angular.module("test",[])
+            .controller("testController",function($scope,$http){
+                $scope.info="ssss";
+                $scope.submit=function(){
+                    var req={
+                        method:"POST",
+                        url:"/login",
+                        headers:{
+                            'Content-Type': 'application/json'
+                        },
+                        data:{
+                            nickname:"123",
+                            password:"123"
+                        }
+                    }
+                    $http(req).success(function(response){
+                        $scope.info=response;
+                    }).error(function(response){
+                        $scope.info=response;
+                    })
+                }
+            })
+</script>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.SiteInfoRepository">
+    <resultMap id="m_site_info" type="com.hu.dg.domain.SiteInfo">
+        <id column="f_id" property="id"/>
+        <result column="f_name" property="name"/>
+        <result column="f_keywords" property="keywords"/>
+        <result column="f_description" property="description"/>
+        <result column="f_icon" property="icon"/>
+        <result column="f_footer" property="footer"/>
+        <result column="f_url" property="url"/>
+        <result column="f_time" property="time"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.SiteInfo">
+insert into m_site_info ( f_id,f_name,f_keywords,f_description,f_icon,f_footer,f_time,f_url)
+values (#{id,jdbcType=INTEGER},#{name,jdbcType=VARCHAR},#{keywords,jdbcType=VARCHAR},
+#{description,jdbcType=VARCHAR},#{icon,jdbcType=VARCHAR},#{footer,jdbcType=VARCHAR},#{time,jdbcType=BIGINT},
+#{url,jdbcType=VARCHAR})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.SiteInfo">
+update m_site_info set f_name=#{name,jdbcType=VARCHAR},f_keywords=#{keywords,jdbcType=VARCHAR},
+f_description=#{description,jdbcType=VARCHAR},f_icon=#{icon,jdbcType=VARCHAR},f_footer=#{footer,jdbcType=VARCHAR},
+f_time=#{time,jdbcType=BIGINT},f_url=#{url,jdbcType=VARCHAR}
+where f_id=#{id}
+</update>
+    <select id="findById" resultMap="m_site_info">select * from m_site_info where f_id=#{id}</select>
+</mapper>

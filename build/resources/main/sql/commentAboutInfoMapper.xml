@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.CommentAboutInfoRepository">
+    <resultMap id="m_comment_about_info" type="com.hu.dg.domain.CommentAboutInfo">
+        <result column="f_comment_id" property="commentId"/>
+        <result column="f_support_count" property="supportCount"/>
+        <result column="f_oppose_count" property="opposeCount"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.CommentAboutInfo">
+insert into m_comment_about_info ( f_comment_id,f_support_count,f_oppose_count)
+values (#{commentId,jdbcType=INTEGER},#{supportCount,jdbcType=INTEGER},#{opposeCount,jdbcType=INTEGER})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.CommentAboutInfo">
+update m_comment_about_info
+set f_support_count=#{supportCount,jdbcType=INTEGER},
+f_oppose_count=#{opposeCount,jdbcType=INTEGER} where f_comment_id=#{commentId}
+</update>
+    <delete id="delete">delete from m_comment_about_info where f_comment_id=#{commentId}</delete>
+    <select id="findById" resultMap="m_comment_about_info">select * from m_comment_about_info where f_comment_id=#{commentId}</select>
+</mapper>

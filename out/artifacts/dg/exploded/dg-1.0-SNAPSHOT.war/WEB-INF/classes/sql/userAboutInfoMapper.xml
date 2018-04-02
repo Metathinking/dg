@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.UserAboutInfoRepository">
+    <resultMap id="m_user_about_info" type="com.hu.dg.domain.UserAboutInfo">
+        <result column="f_user_id" property="userId"/>
+        <result column="f_article_count" property="articleCount"/>
+        <result column="f_recommend_count" property="recommendCount"/>
+        <result column="f_focus_user_count" property="focusUserCount"/>
+        <result column="f_fans_count" property="fansCount"/>
+        <result column="f_focus_article_count" property="focusArticleCount"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.UserAboutInfo">
+insert into m_user_about_info ( f_user_id,f_article_count,f_recommend_count,f_focus_user_count,
+f_fans_count,f_focus_article_count)
+values (#{userId,jdbcType=INTEGER},#{articleCount,jdbcType=INTEGER},#{recommendCount,jdbcType=INTEGER},
+#{focusUserCount,jdbcType=INTEGER},#{fansCount,jdbcType=INTEGER},#{focusArticleCount,jdbcType=INTEGER})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.UserAboutInfo">
+update m_user_about_info
+set f_article_count=#{articleCount,jdbcType=INTEGER},
+f_recommend_count=#{recommendCount,jdbcType=INTEGER},f_focus_user_count=#{focusUserCount,jdbcType=INTEGER},
+f_fans_count=#{fansCount,jdbcType=INTEGER},f_focus_article_count=#{focusArticleCount,jdbcType=INTEGER}
+where f_user_id=#{userId}
+</update>
+    <delete id="delete">delete from m_user_about_info where f_user_id=#{userId}</delete>
+    <select id="findById" resultMap="m_user_about_info">select * from m_user_about_info where f_user_id=#{userId}</select>
+</mapper>

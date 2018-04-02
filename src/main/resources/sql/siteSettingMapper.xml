@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.SiteSettingRepository">
+    <resultMap id="m_site_setting" type="com.hu.dg.domain.SiteSetting">
+        <id column="f_id" property="id"/>
+        <result column="f_main_article_count" property="mainArticleCount"/>
+        <result column="f_article_page_size" property="articlePageSize"/>
+        <result column="f_article_comment_count" property="articleCommentCount"/>
+        <result column="f_comment_page_size" property="commentPageSize"/>
+        <result column="f_time" property="time"/>
+        <result column="f_over_time" property="overTime"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.SiteSetting">
+insert into m_site_setting ( f_id,f_main_article_count,f_article_page_size,
+f_article_comment_count,f_comment_page_size,f_time,f_over_time)
+ values (#{id,jdbcType=INTEGER},#{mainArticleCount,jdbcType=INTEGER},#{articlePageSize,jdbcType=INTEGER},
+ #{articleCommentCount,jdbcType=INTEGER},#{commentPageSize,jdbcType=INTEGER},#{time,jdbcType=BIGINT},
+ #{overTime,jdbcType=BIGINT})
+ </insert>
+    <update id="update" parameterType="com.hu.dg.domain.SiteSetting">
+update m_site_setting set f_main_article_count=#{mainArticleCount,jdbcType=INTEGER},
+f_article_page_size=#{articlePageSize,jdbcType=INTEGER},f_article_comment_count=#{articleCommentCount,jdbcType=INTEGER},
+f_comment_page_size=#{commentPageSize,jdbcType=INTEGER},f_time=#{time,jdbcType=BIGINT},
+f_over_time=#{overTime,jdbcType=BIGINT}
+ where f_id=#{id}
+</update>
+    <select id="findById" resultMap="m_site_setting">select * from m_site_setting where f_id=#{id}</select>
+</mapper>

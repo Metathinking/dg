@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.UserEffectCommentRepository">
+    <resultMap id="m_user_effect_comment" type="com.hu.dg.domain.UserEffectComment">
+        <id column="f_id" property="id"/>
+        <result column="f_user_id" property="userId"/>
+        <result column="f_comment_id" property="commentId"/>
+        <result column="f_effect" property="effect"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.UserEffectComment">
+insert into m_user_effect_comment ( f_id,f_user_id,f_comment_id,f_effect)
+values (#{id,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{commentId,jdbcType=INTEGER},#{effect,jdbcType=TINYINT})
+</insert>
+    <select id="getMaxId" resultType="int">
+select IFNULL(max(f_id),10000) FROM m_user_effect_comment
+</select>
+    <select id="find" resultMap="m_user_effect_comment">
+        select * from m_user_effect_comment where f_user_id=#{userId} and f_comment_id=#{commentId}
+    </select>
+</mapper>

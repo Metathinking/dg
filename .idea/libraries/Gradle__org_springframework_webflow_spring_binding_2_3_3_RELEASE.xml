@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.springframework.webflow:spring-binding:2.3.3.RELEASE">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.webflow/spring-binding/2.3.3.RELEASE/6c75016259fc43c8f1de2934d8670f33962baea9/spring-binding-2.3.3.RELEASE.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.springframework.webflow/spring-binding/2.3.3.RELEASE/ce2f90d79623e059edceecc1625700296bfa975a/spring-binding-2.3.3.RELEASE-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.EmailValidateRepository">
+    <resultMap id="m_email_validate" type="com.hu.dg.domain.EmailValidate">
+        <id column="f_id" property="id"/>
+        <result column="f_user_id" property="userId"/>
+        <result column="f_code" property="code"/>
+        <result column="f_time" property="time"/>
+        <result column="f_validated" property="validated"/>
+    </resultMap>
+    <insert id="create"
+            parameterType="com.hu.dg.domain.EmailValidate">insert into m_email_validate ( f_id,f_user_id,f_code,f_time,f_validated) values (#{id,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},#{code,jdbcType=VARCHAR},#{time,jdbcType=VARCHAR},#{validated,jdbcType=TINYINT})</insert>
+    <update id="update"
+            parameterType="com.hu.dg.domain.EmailValidate">update m_email_validate set f_user_id=#{userId,jdbcType=INTEGER},f_code=#{code,jdbcType=VARCHAR},f_time=#{time,jdbcType=VARCHAR},f_validated=#{validated,jdbcType=TINYINT} where f_id=#{id}</update>
+    <delete id="delete">delete from m_email_validate where f_id=#{id}</delete>
+    <select id="findById" resultMap="m_email_validate">select * from m_email_validate where f_id=#{id}</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_email_validate</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_email_validate</select>
+</mapper>

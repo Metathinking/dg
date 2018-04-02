@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.BrowseRecordRepository">
+    <resultMap id="m_browse_record" type="com.hu.dg.domain.BrowseRecord">
+        <id column="f_id" property="id"/>
+        <result column="f_article_id" property="articleId"/>
+        <result column="f_user_id" property="userId"/>
+        <result column="f_time" property="time"/>
+        <result column="f_ip" property="ip"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.BrowseRecord">
+insert into m_browse_record ( f_id,f_article_id,f_user_id,f_time,f_ip)
+values (#{id,jdbcType=INTEGER},#{articleId,jdbcType=INTEGER},#{userId,jdbcType=INTEGER},
+#{time,jdbcType=BIGINT},#{ip,jdbcType=VARCHAR})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.BrowseRecord">
+update m_browse_record set f_article_id=#{articleId,jdbcType=INTEGER},f_user_id=#{userId,jdbcType=INTEGER},
+f_time=#{time,jdbcType=BIGINT},f_ip=#{ip,jdbcType=VARCHAR} where f_id=#{id}
+</update>
+    <select id="list" resultMap="m_browse_record">select * from m_browse_record order by f_id limit #{start},#{size}</select>
+    <select id="findById" resultMap="m_browse_record">select * from m_browse_record where f_id=#{id}</select>
+    <select id="findByArticleIdAndUserId" resultMap="m_browse_record">
+select * from m_browse_record where f_article_id=#{articleId} and f_user_id=#{userId}
+</select>
+    <select id="findByArticleIdAndIp" resultMap="m_browse_record">
+select * from m_browse_record where f_article_id=#{articleId} and f_ip=#{ip}
+</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_browse_record</select>
+    <select id="getMaxId" resultType="int">select IFNULL(max(f_id),10000) FROM m_browse_record</select>
+</mapper>

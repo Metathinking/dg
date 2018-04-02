@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hu.dg.repository.AdminRepository">
+    <resultMap id="m_admin" type="com.hu.dg.domain.Admin">
+        <id column="f_id" property="id"/>
+        <result column="f_password" property="password"/>
+    </resultMap>
+    <insert id="create" parameterType="com.hu.dg.domain.Admin">
+insert into m_admin ( f_id,f_password)
+values (#{id,jdbcType=VARCHAR},#{password,jdbcType=VARCHAR})
+</insert>
+    <update id="update" parameterType="com.hu.dg.domain.Admin">
+update m_admin set f_password=#{password,jdbcType=VARCHAR}
+where f_id=#{id}
+</update>
+    <select id="find" resultMap="m_admin">
+select * from m_admin where f_id=#{id} and f_password=#{password}
+</select>
+    <select id="getCount" resultType="int">select count(f_id) FROM m_admin</select>
+</mapper>

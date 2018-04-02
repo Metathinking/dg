@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dts/tiles-config_3_0.dtd">
+<tiles-definitions>
+    <definition name="userBaseLayout" template="/WEB-INF/tiles/user/template/baseLayout.jsp">
+        <put-attribute name="title" value="我来说-购物测评网"/>
+        <put-attribute name="top-navigation" value="/WEB-INF/tiles/front/template/top-navigation.jsp"/>
+        <put-attribute name="right-navigation" value="/WEB-INF/tiles/user/template/right-navigation.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/front/template/footer.jsp"/>
+    </definition>
+
+    <definition name="user/article-list" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/article-list.jsp"/>
+    </definition>
+    <definition name="user/article-edit" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/article-edit.jsp"/>
+    </definition>
+    <definition name="user/recycle-bin-article-list" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/recycle-bin-article-list.jsp"/>
+    </definition>
+    <definition name="user/focus-article-list" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/focus-article-list.jsp"/>
+    </definition>
+    <definition name="user/recommend-edit" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/recommend-edit.jsp"/>
+    </definition>
+    <definition name="user/recommend-list" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/recommend-list.jsp"/>
+    </definition>
+    <definition name="user/focus-user-list" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/focus-user-list.jsp"/>
+    </definition>
+    <definition name="user/fans-list" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/fans-list.jsp"/>
+    </definition>
+    <definition name="user/user-msg-edit" extends="userBaseLayout">
+        <put-attribute name="content" value="/WEB-INF/jsp/user/user-msg-edit.jsp"/>
+    </definition>
+</tiles-definitions>
